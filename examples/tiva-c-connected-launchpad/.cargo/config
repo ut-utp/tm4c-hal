@@ -5,9 +5,9 @@
 # runner = "gdb-multiarch -q -x openocd.gdb"
 # runner = "gdb -q -x openocd.gdb"
 
-rustflags = [
-  "-C", "link-arg=-Tlink.x",
-]
+#rustflags = [
+ # "-C", "link-arg=-Tlink.x",
+#]
 
 [build]
 target = "thumbv7em-none-eabihf" # Cortex-M4F and Cortex-M7F (with FPU)

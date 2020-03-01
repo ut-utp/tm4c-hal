@@ -19,7 +19,7 @@
 //!
 //! [`f3`]: https://docs.rs/f3/~0.5.1
 
-#![deny(missing_docs)]
+//#![deny(missing_docs)]
 #![deny(warnings)]
 #![allow(deprecated)]
 #![no_std]
@@ -32,9 +32,11 @@ pub mod gpio;
 pub mod i2c;
 pub mod prelude;
 pub mod serial;
+pub mod pwm;
+pub mod timers;
 pub mod spi;
 pub mod sysctl;
-pub mod timer;
+//pub mod timer;
 
 extern crate embedded_hal as hal;
 extern crate nb;
