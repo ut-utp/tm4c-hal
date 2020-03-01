@@ -4,22 +4,22 @@ use tm4c123x::{ADC0};
 trait AdcPIn{}
 
 struct Pin1{
-	enabled: bool,
+	//enabled: bool,
 }
 struct Pin2{
-	enabled: bool,
+	//enabled: bool,
 }
 struct Pin3{
-	enabled: bool,
+	//enabled: bool,
 }
 struct Pin4{
-	enabled: bool,
+	//enabled: bool,
 }
 struct Pin5{
-	enabled: bool,
+	//enabled: bool,
 }
 struct Pin6{
-	enabled: bool,
+	//enabled: bool,
 }
 pub struct Tm4cAdc{
 	adc: ADC0,
@@ -73,6 +73,39 @@ where
 	type Error = u8;
 
 	fn read(&mut self, _pin: &mut Pin) -> Result<U8, nb::Error<u8>>{
+		let channel = Pin::channel();
+		match channel{
+                0 => {
+                    self.adc.ssmux3.write(|w| unsafe{w.bits(self.adc.ssmux3.read().bits() & !0x000F )});
+                    self.adc.ssmux3.write(|w| unsafe{w.bits(self.adc.ssmux3.read().bits() + 0 )});
+                }
+                1 => {
+                    self.adc.ssmux3.write(|w| unsafe{w.bits(self.adc.ssmux3.read().bits() & !0x000F )});
+                    self.adc.ssmux3.write(|w| unsafe{w.bits(self.adc.ssmux3.read().bits() + 1 )});
+                }
+                2 => {
+                    self.adc.ssmux3.write(|w| unsafe{w.bits(self.adc.ssmux3.read().bits() & !0x000F )});
+                    self.adc.ssmux3.write(|w| unsafe{w.bits(self.adc.ssmux3.read().bits() + 2 )});
+
+                }
+                3 => {
+                    self.adc.ssmux3.write(|w| unsafe{w.bits(self.adc.ssmux3.read().bits() & !0x000F )});
+                    self.adc.ssmux3.write(|w| unsafe{w.bits(self.adc.ssmux3.read().bits() + 3 )});
+                }
+                8 => {
+                    self.adc.ssmux3.write(|w| unsafe{w.bits(self.adc.ssmux3.read().bits() & !0x000F )});
+                    self.adc.ssmux3.write(|w| unsafe{w.bits(self.adc.ssmux3.read().bits() + 8 )});
+                }
+                9 => {
+                    self.adc.ssmux3.write(|w| unsafe{w.bits(self.adc.ssmux3.read().bits() & !0x000F )});
+                    self.adc.ssmux3.write(|w| unsafe{w.bits(self.adc.ssmux3.read().bits() + 9 )});
+                }
+
+
+                 _=> {
+
+                }			
+		}
         //let p = unsafe { &*tm4c123x::ADC0::ptr() };
         self.adc.pssi.write(|w| unsafe{w.bits(0x0008)});
         while self.adc.ris.read().bits()&0x08==0 {};
