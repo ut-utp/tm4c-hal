@@ -3,10 +3,10 @@
 
 extern crate panic_halt; // you can put a breakpoint on `rust_begin_unwind` to catch panics
 extern crate tm4c123x_hal as hal;
-
 use core::fmt::Write;
 use cortex_m_rt::entry;
 use hal::prelude::*;
+use hal::adc;
 
 #[entry]
 fn main() -> ! {
@@ -20,6 +20,16 @@ fn main() -> ! {
     let clocks = sc.clock_setup.freeze();
 
     let mut porta = p.GPIO_PORTA.split(&sc.power_control);
+    let mut porte = p.GPIO_PORTE.split(&sc.power_control);
+    let pe3 = porte.pe3.into_analog_input();
+    let pe2 = porte.pe2.into_analog_input();
+    let pe1 = porte.pe1.into_analog_input();
+    let pe0 = porte.pe0.into_analog_input();
+    let pe5 = porte.pe5.into_analog_input();
+    let pe4 = porte.pe4.into_analog_input();
+    let adc = adc::Tm4cAdc::adc0(p. ADC0, &sc.power_control, (pe3, pe2, pe1, pe0, pe5, pe4));
+
+
 
     // Activate UART
     let mut uart = hal::serial::Serial::uart0(

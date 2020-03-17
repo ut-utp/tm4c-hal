@@ -1,5 +1,6 @@
 
 use hal::Pwm;
+use hal::PwmPin;
 extern crate tm4c123x;
 use tm4c123x::{PWM0};
 use tm4c123x::{GPIO_PORTB};
@@ -10,6 +11,7 @@ use crate::gpio::{AlternateFunction, OutputMode, AF4};
 use crate::sysctl;
 use crate::sysctl::Clocks;
 pub unsafe trait Pwm_trait<PWM> {}
+
 
 
 unsafe impl<T> Pwm_trait<PWM0> for PB6<AlternateFunction<AF4, T>> where T: OutputMode {}
@@ -152,4 +154,15 @@ where P: Into<Self::Time>
 	self.period=curr_period;
 }
 
+
+
+
 }
+
+
+
+
+
+
+
+

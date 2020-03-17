@@ -11,6 +11,9 @@ pub trait InputMode {}
 /// All output modes implement this
 pub trait OutputMode {}
 
+/// All analog modes implement this
+pub trait AnalogMode {}
+
 /// OpenDrain modes implement this
 pub trait OpenDrainMode {
     /// Is pull-up enabled
@@ -202,5 +205,15 @@ pub enum InterruptMode {
     /// Disable interrupts on this pin
     Disabled,
 }
+
+
+/// Pin is configured for analog input
+pub struct AnalogIn;
+
+impl AnalogMode for AnalogIn {}
+
+impl InputMode for AnalogIn{}
+
+impl IsUnlocked for AnalogIn{}
 
 // End of file

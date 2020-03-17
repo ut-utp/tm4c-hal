@@ -1,61 +1,52 @@
 use hal::adc;
 use tm4c123x::{ADC0};
+use crate::{sysctl, gpio::gpioe};
+use crate::{gpio::*, gpio::gpioe::*};
 //TODO: Macro this
 trait AdcPIn{}
 
-struct Pin1{
-	//enabled: bool,
-}
-struct Pin2{
-	//enabled: bool,
-}
-struct Pin3{
-	//enabled: bool,
-}
-struct Pin4{
-	//enabled: bool,
-}
-struct Pin5{
-	//enabled: bool,
-}
-struct Pin6{
-	//enabled: bool,
-}
-pub struct Tm4cAdc{
+pub struct Tm4cAdc//<T: Sized>
+{
 	adc: ADC0,
+	//pins: (T, T, T, T, T, T),   // having some recursive trait bound issues.
+								  // just hardcoding pins for now
+								  // TODO: Find a way to use generics here
+	
+	pins: (PE3<AnalogIn>, PE2<AnalogIn>, PE1<AnalogIn>, 
+	PE0<AnalogIn>, PE5<AnalogIn>, PE4<AnalogIn>),						  
 }
 //Macro this
-impl adc::Channel<Tm4cAdc> for Pin1{
+impl adc::Channel<Tm4cAdc> for PE3<AnalogIn>{
 	type ID = u8;
 	fn channel() -> Self::ID{
 		0
 	}
 }
-impl adc::Channel<Tm4cAdc> for Pin2{
+impl adc::Channel<Tm4cAdc> for PE2<AnalogIn>{
 	type ID = u8;
 	fn channel() -> Self::ID{
 		1
 	}
 }
-impl adc::Channel<Tm4cAdc> for Pin3{
+impl adc::Channel<Tm4cAdc> for PE1<AnalogIn>{
 	type ID = u8;
 	fn channel() -> Self::ID{
 		2
 	}
 }
-impl adc::Channel<Tm4cAdc> for Pin4{
+impl adc::Channel<Tm4cAdc> for PE0<AnalogIn>{
 	type ID = u8;
 	fn channel() -> Self::ID{
 		3
 	}
 }
-impl adc::Channel<Tm4cAdc> for Pin5{
+impl adc::Channel<Tm4cAdc> for PE5<AnalogIn>{
 	type ID = u8;
 	fn channel() -> Self::ID{
 		8
 	}
 }
-impl adc::Channel<Tm4cAdc> for Pin6{
+impl adc::Channel<Tm4cAdc> for PE4<AnalogIn>{
 	type ID = u8;
 	fn channel() -> Self::ID{
 		9
@@ -117,11 +108,21 @@ where
 
 }
 
-impl Tm4cAdc{
-	pub fn adc0(adcin: tm4c123x::ADC0) -> Self{
+impl Tm4cAdc
+   
+where
+
+{
+	pub fn adc0(adcin: tm4c123x::ADC0, power: &sysctl::PowerControl, 
+				pins: (PE3<AnalogIn>, PE2<AnalogIn>, PE1<AnalogIn>, 
+				PE0<AnalogIn>, PE5<AnalogIn>, PE4<AnalogIn>)) -> Self{
 		//let curradc = adcin;
-		adcin.pc.write(|w| unsafe{w.bits(adcin.pc.read().bits() & !0x0F) });
-        adcin.pc.write(|w| unsafe{w.bits(adcin.pc.read().bits() | 0x01 )});
+		//adcin.pc.write(|w| unsafe{w.bits(adcin.pc.read().bits() & !0x0F) });
+        //adcin.pc.write(|w| unsafe{w.bits(adcin.pc.read().bits() | 0x01 )});
+        sysctl::control_power(
+            power, sysctl::Domain::Adc0,
+            sysctl::RunMode::Run, sysctl::PowerState::On);
+        sysctl::reset(power, sysctl::Domain::Adc0);
         adcin.sspri.write(|w| unsafe{w.bits(0x0123)});
         adcin.actss.write(|w| unsafe{w.bits(adcin.actss.read().bits() & !0x0008) });
         adcin.emux.write(|w| unsafe{w.bits(adcin.emux.read().bits() & !0xF000) });
@@ -132,12 +133,13 @@ impl Tm4cAdc{
         // let pins = [Pin{channel}]{
 
         // }
-		let adc = Tm4cAdc{
+		Tm4cAdc{
 			adc: adcin,
+			pins: pins,
 			//Pins: []
 
-		};
-		adc
+		}
+		//adc
 	}
 
 
