@@ -53,6 +53,101 @@ impl adc::Channel<Tm4cAdc> for PE4<AnalogIn>{
 	}
 }
 
+pub struct Channel_pe0;
+pub struct Channel_pe1;
+pub struct Channel_pe2;
+pub struct Channel_pe3;
+pub struct Channel_pe5;
+pub struct Channel_pe4;
+
+impl adc::Channel<Tm4cAdc> for Channel_pe3{
+	type ID =u8;
+	fn channel() -> Self::ID{
+		0
+	}
+}
+
+impl adc::Channel<Tm4cAdc> for Channel_pe2{
+	type ID =u8;
+	fn channel() -> Self::ID{
+		1
+	}
+}
+
+impl adc::Channel<Tm4cAdc> for Channel_pe1{
+	type ID =u8;
+	fn channel() -> Self::ID{
+		2
+	}
+}
+
+impl adc::Channel<Tm4cAdc> for Channel_pe0{
+	type ID =u8;
+	fn channel() -> Self::ID{
+		3
+	}
+}
+
+impl adc::Channel<Tm4cAdc> for Channel_pe5{
+	type ID =u8;
+	fn channel() -> Self::ID{
+		8
+	}
+}
+
+impl adc::Channel<Tm4cAdc> for Channel_pe4{
+	type ID =u8;
+	fn channel() -> Self::ID{
+		9
+	}
+}
+ impl From<u32> for Channel_pe0{
+   fn from(x: u32)->Self{
+     Channel_pe0
+   }
+ }
+
+  impl From<u32> for Channel_pe1{
+   fn from(x: u32)->Self{
+     Channel_pe1
+   }
+ }
+
+  impl From<u32> for Channel_pe2{
+   fn from(x: u32)->Self{
+     Channel_pe2
+   }
+ }
+
+  impl From<u32> for Channel_pe3{
+   fn from(x: u32)->Self{
+     Channel_pe3
+   }
+ }
+
+  impl From<u32> for Channel_pe5{
+   fn from(x: u32)->Self{
+     Channel_pe5
+   }
+ }
+
+  impl From<u32> for Channel_pe4{
+   fn from(x: u32)->Self{
+     Channel_pe4
+   }
+ }
+// impl Into<u32> for PE0<AnalogIn>{
+//   fn into(self)->u32{
+//     3
+//   }
+// }
+
+// impl Into<u32> for PE1<AnalogIn>{
+//   fn into(self)->u32{
+//     2
+//   }
+// }
+
 
 
 
