@@ -136,6 +136,43 @@ impl adc::Channel<Tm4cAdc> for Channel_pe4{
      Channel_pe4
    }
  }
+
+
+  impl Into<u32> for Channel_pe0{
+   fn into(self)->u32{
+     0
+   }
+ }
+
+  impl Into<u32> for Channel_pe1{
+   fn into(self)->u32{
+     1
+   }
+ }
+
+  impl Into<u32> for Channel_pe2{
+   fn into(self)->u32{
+     2
+   }
+ }
+
+  impl Into<u32> for Channel_pe3{
+   fn into(self)->u32{
+     3
+   }
+ }
+
+  impl Into<u32> for Channel_pe5{
+   fn into(self)->u32{
+     5
+   }
+ }
+
+  impl Into<u32> for Channel_pe4{
+   fn into(self)->u32{
+     4
+   }
+ }
 // impl Into<u32> for PE0<AnalogIn>{
 //   fn into(self)->u32{
 //     3
