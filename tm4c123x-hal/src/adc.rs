@@ -53,12 +53,12 @@ impl adc::Channel<Tm4cAdc> for PE4<AnalogIn>{
 	}
 }
 
-pub struct Channel_pe0(i8);
-pub struct Channel_pe1(i8);
-pub struct Channel_pe2(i8);
-pub struct Channel_pe3(i8);
-pub struct Channel_pe5(i8);
-pub struct Channel_pe4(i8);
+pub struct Channel_pe0;
+pub struct Channel_pe1;
+pub struct Channel_pe2;
+pub struct Channel_pe3;
+pub struct Channel_pe5;
+pub struct Channel_pe4;
 
 impl adc::Channel<Tm4cAdc> for Channel_pe3{
 	type ID =u8;
@@ -101,102 +101,102 @@ impl adc::Channel<Tm4cAdc> for Channel_pe4{
 		9
 	}
 }
- // impl From<u32> for Channel_pe0{
- //   fn from(x: u32)->Self{
- //     Channel_pe0
- //   }
- // }
-
- //  impl From<u32> for Channel_pe1{
- //   fn from(x: u32)->Self{
- //     Channel_pe1
- //   }
- // }
-
- //  impl From<u32> for Channel_pe2{
- //   fn from(x: u32)->Self{
- //     Channel_pe2
- //   }
- // }
-
- //  impl From<u32> for Channel_pe3{
- //   fn from(x: u32)->Self{
- //     Channel_pe3
- //   }
- // }
-
- //  impl From<u32> for Channel_pe5{
- //   fn from(x: u32)->Self{
- //     Channel_pe5
- //   }
- // }
-
- //  impl From<u32> for Channel_pe4{
- //   fn from(x: u32)->Self{
- //     Channel_pe4
- //   }
- // }
-
-
-  impl Into<Channel_pe0> for u32{
-   fn into(self)->Channel_pe0{
-   		let mut res = Channel_pe0(-1);
-   		if(self==0){
- 	  	res = Channel_pe0(0);
-    	}
-    	res
+ impl From<u32> for Channel_pe0{
+   fn from(x: u32)->Self{
+     Channel_pe0
    }
  }
 
-  impl Into<Channel_pe1> for u32{
-   fn into(self)->Channel_pe1{
-   		let mut res = Channel_pe1(-1);
-   		if(self==1){
- 	  	res = Channel_pe1(1);
-    	}
-    	res
+  impl From<u32> for Channel_pe1{
+   fn from(x: u32)->Self{
+     Channel_pe1
    }
  }
 
-  impl Into<Channel_pe2> for u32{
-   fn into(self)->Channel_pe2{
-   		let mut res = Channel_pe2(-1);
-   		if(self==2){
- 	  	res = Channel_pe2(2);
-    	}
-    	res
+  impl From<u32> for Channel_pe2{
+   fn from(x: u32)->Self{
+     Channel_pe2
    }
  }
 
-  impl Into<Channel_pe3> for u32{
-   fn into(self)->Channel_pe3{
-   		let mut res = Channel_pe3(-1);
-   		if(self==3){
- 	  	res = Channel_pe3(3);
-    	}
-    	res
+  impl From<u32> for Channel_pe3{
+   fn from(x: u32)->Self{
+     Channel_pe3
    }
  }
 
-  impl Into<Channel_pe5> for u32{
-   fn into(self)->Channel_pe5{
-   		let mut res = Channel_pe5(-1);
-   		if(self==5){
- 	  	res = Channel_pe5(5);
-    	}
-    	res
+  impl From<u32> for Channel_pe5{
+   fn from(x: u32)->Self{
+     Channel_pe5
    }
  }
 
-  impl Into<Channel_pe4> for u32{
-   fn into(self)->Channel_pe4{
-   		let mut res = Channel_pe4(-1);
-   		if(self==4){
- 	  	res = Channel_pe4(4);
-    	}
-    	res
+  impl From<u32> for Channel_pe4{
+   fn from(x: u32)->Self{
+     Channel_pe4
    }
  }
+
+
+ //  impl Into<Channel_pe0> for u32{
+ //   fn into(self)->Channel_pe0{
+ //   		let mut res = Channel_pe0(-1);
+ //   		if(self==0){
+ // 	  	res = Channel_pe0(0);
+ //    	}
+ //    	res
+ //   }
+ // }
+
+ //  impl Into<Channel_pe1> for u32{
+ //   fn into(self)->Channel_pe1{
+ //   		let mut res = Channel_pe1(-1);
+ //   		if(self==1){
+ // 	  	res = Channel_pe1(1);
+ //    	}
+ //    	res
+ //   }
+ // }
+
+ //  impl Into<Channel_pe2> for u32{
+ //   fn into(self)->Channel_pe2{
+ //   		let mut res = Channel_pe2(-1);
+ //   		if(self==2){
+ // 	  	res = Channel_pe2(2);
+ //    	}
+ //    	res
+ //   }
+ // }
+
+ //  impl Into<Channel_pe3> for u32{
+ //   fn into(self)->Channel_pe3{
+ //   		let mut res = Channel_pe3(-1);
+ //   		if(self==3){
+ // 	  	res = Channel_pe3(3);
+ //    	}
+ //    	res
+ //   }
+ // }
+
+ //  impl Into<Channel_pe5> for u32{
+ //   fn into(self)->Channel_pe5{
+ //   		let mut res = Channel_pe5(-1);
+ //   		if(self==5){
+ // 	  	res = Channel_pe5(5);
+ //    	}
+ //    	res
+ //   }
+ // }
+
+ //  impl Into<Channel_pe4> for u32{
+ //   fn into(self)->Channel_pe4{
+ //   		let mut res = Channel_pe4(-1);
+ //   		if(self==4){
+ // 	  	res = Channel_pe4(4);
+ //    	}
+ //    	res
+ //   }
+ // }
 // impl Into<u32> for PE0<AnalogIn>{
 //   fn into(self)->u32{
 //     3
