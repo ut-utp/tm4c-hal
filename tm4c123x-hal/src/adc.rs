@@ -214,7 +214,7 @@ impl adc::Channel<Tm4cAdc> for Channel_pe4{
 
 impl <U8, Pin> adc::OneShot<Tm4cAdc, U8, Pin> for Tm4cAdc
 where
-   Pin: hal::adc::Channel<Tm4cAdc, ID=u8> + Copy,
+   Pin: hal::adc::Channel<Tm4cAdc, ID=u8>,
    U8:   From<u32>,
 {
 	type Error = u8;
