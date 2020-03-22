@@ -8,14 +8,14 @@ trait AdcPIn{}
 //#[derive(Copy)]
 
 pub struct components{
-	adc1: Tm4cAdc<Channel_pe3>,
-	channel1: Channel_pe3,
-	adc2: Tm4cAdc<Channel_pe2>,
-	channel2: Channel_pe2,
-	adc3: Tm4cAdc<Channel_pe1>,
-	channel3: Channel_pe1,
-	adc4: Tm4cAdc<Channel_pe0>,
-	channel4: Channel_pe0,		
+	pub adc1: Tm4cAdc<Channel_pe3>,
+	pub channel1: Channel_pe3,
+	pub adc2: Tm4cAdc<Channel_pe2>,
+	pub channel2: Channel_pe2,
+	pub adc3: Tm4cAdc<Channel_pe1>,
+	pub channel3: Channel_pe1,
+	pub adc4: Tm4cAdc<Channel_pe0>,
+	pub channel4: Channel_pe0,		
 }
 pub struct Tm4cAdc<T>//<T: Sized>
 {
