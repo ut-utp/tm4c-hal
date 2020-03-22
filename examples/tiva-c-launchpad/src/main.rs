@@ -27,7 +27,7 @@ fn main() -> ! {
     let pe0 = porte.pe0.into_analog_input();
     let pe5 = porte.pe5.into_analog_input();
     let pe4 = porte.pe4.into_analog_input();
-    let adc = adc::Tm4cAdc::adc0(p. ADC0, &sc.power_control, (pe3, pe2, pe1, pe0, pe5, pe4));
+    // let adc = adc::Tm4cAdc::adc0(p. ADC0, &sc.power_control, (pe3, pe2, pe1, pe0, pe5, pe4));
 
 
 
