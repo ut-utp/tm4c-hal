@@ -281,10 +281,12 @@ where
                 }			
 		}
         //let p = unsafe { &*tm4c123x::ADC0::ptr() };
+        adc.actss.write(|w| unsafe{w.bits((adc.actss.read().bits() | 0x0008 ))});
         adc.pssi.write(|w| unsafe{w.bits(0x0008)});
         while adc.ris.read().bits()&0x08==0 {};
         let out = adc.ssfifo3.read().bits()& 0x0FFF;
         adc.isc.write(|w| unsafe{w.bits(0x00008)});
+        adc.actss.write(|w| unsafe{w.bits((adc.actss.read().bits() | !0x0008 ))});
 		Ok(out.into())
 		// Ok(u8::from(4))
 	}
